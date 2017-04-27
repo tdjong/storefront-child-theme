@@ -23,4 +23,5 @@ function sf_child_theme_dequeue_style() {
  * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
  */
 
-
+// We want the user to enable shipping to a different address
+add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
