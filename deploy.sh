@@ -1,6 +1,11 @@
 #!/bin/sh
-# zip for easy deploy to running wordpress instance
-# using git commands
+# release latest committed version as easy installable zip
+
+# show changes
+git diff
+read -p "Press enter to continue" key
+
+# update version if needed
 
 VERSIONFILE=style.css
 # show old version and write new version
@@ -19,11 +24,11 @@ if [ "$version" != "" ]; then
   sed -i -e "s/$OLDVERSION/Version:\t\t$version/" $VERSIONFILE
 fi
 
-git diff
-read -p "Press enter to continue" key
-
 git log --oneline > changelog.txt
 git commit -a -m "Bump to version $version"
+
+# zip for easy deploy to running wordpress instance
+# using git commands
 
 # zip for installation via wordpress interface
 git archive -v --format zip --prefix storefront-child/ -o ../storefront-child.zip HEAD
