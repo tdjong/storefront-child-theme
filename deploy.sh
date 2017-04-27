@@ -16,7 +16,7 @@ read version
 if [ "$version" != "" ]; then
     # Replace whole line and not just version number, 
     # we don't want to replace this number elsewhere
-  sed -i -e "s/$OLDVERSION/Version:\t$version/" $VERSIONFILE
+  sed -i -e "s/$OLDVERSION/Version:\t\t$version/" $VERSIONFILE
 fi
 
 git diff
